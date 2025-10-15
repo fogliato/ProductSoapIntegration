@@ -1,0 +1,30 @@
+### JWT Authentication - Product API
+### This file contains HTTP request examples to test JWT authentication
+
+### 1. Login - Get JWT Token
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password123"
+}
+
+### 2. Validate Token (copy the token from the response above)
+GET https://localhost:7000/api/auth/validate
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### 3. Access Product WITH authentication (replace the token)
+GET https://localhost:7000/api/products/123
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### 4. Access Product WITHOUT authentication (should return 401)
+GET https://localhost:7000/api/products/123
+
+###
+### NOTES:
+### - Default password for any user is: password123
+### - Token expires in 60 minutes (configurable in appsettings.json)
+### - To test in Swagger, click the "Authorize" button and paste the token
+###
+
